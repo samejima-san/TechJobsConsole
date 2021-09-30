@@ -15,6 +15,25 @@ namespace TechJobsConsole
             LoadData();
             return AllJobs;
         }
+        //returns a list of all values in the csv without duplicates
+        public static List<Dictionary<string,string>> FindByValue(string input){
+            
+            LoadData();
+            List<Dictionary<string,string>> values = new List<Dictionary<string,string>>();
+            foreach (Dictionary<string, string> job in AllJobs){
+                input = input.ToLower();
+                if(job["name"].ToLower() == input ||
+                   job["employer"].ToLower()==input||
+                   job["location"].ToLower() == input||
+                   job["position type"].ToLower() == input||
+                   job["core competency"].ToLower() == input){
+                       if(!values.Contains(job)){
+                            values.Add(job);
+                       }
+                }
+            }
+            return values;
+        }
 
         /*
          * Returns a list of all values contained in a given column,
