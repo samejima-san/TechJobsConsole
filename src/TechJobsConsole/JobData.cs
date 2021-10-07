@@ -20,9 +20,8 @@ namespace TechJobsConsole
             
             LoadData();
             List<Dictionary<string,string>> values = new List<Dictionary<string,string>>();
-   
+            input = input.ToLower();
             foreach (var job in AllJobs){
-                input = input.ToLower();
                 foreach(var item in job){
                     if(input == item.Value.ToLower()){
                         if(!values.Contains(job)){
