@@ -20,17 +20,17 @@ namespace TechJobsConsole
             
             LoadData();
             List<Dictionary<string,string>> values = new List<Dictionary<string,string>>();
-            foreach (Dictionary<string, string> job in AllJobs){
+   
+            foreach (var job in AllJobs){
                 input = input.ToLower();
-                if(job["name"].ToLower() == input ||
-                   job["employer"].ToLower()==input||
-                   job["location"].ToLower() == input||
-                   job["position type"].ToLower() == input||
-                   job["core competency"].ToLower() == input){
-                       if(!values.Contains(job)){
+                foreach(var item in job){
+                    if(input == item.Value.ToLower()){
+                        if(!values.Contains(job)){
                             values.Add(job);
                        }
+                    }
                 }
+
             }
             return values;
         }
