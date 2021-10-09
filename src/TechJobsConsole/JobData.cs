@@ -20,9 +20,8 @@ namespace TechJobsConsole
             
             LoadData();
             List<Dictionary<string,string>> values = new List<Dictionary<string,string>>();
-            input = input.ToLower();
-            foreach (var job in AllJobs){
-                foreach(var item in job){
+            foreach (Dictionary<string, string> job in AllJobs){
+                foreach(KeyValuePair<string,string> item in job){
                     if(input == item.Value.ToLower()){
                         if(!values.Contains(job)){
                             values.Add(job);
@@ -60,13 +59,12 @@ namespace TechJobsConsole
         {
             // load data, if not already loaded
             LoadData();
-
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+            if(value.Trim() == ""){ return jobs;} //empty or only spaces/tabs edge case
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
-                string aValue = row[column];
-
+                string aValue = row[column].ToLower();//to keep it case insensitive
                 if (aValue.Contains(value))
                 {
                     jobs.Add(row);

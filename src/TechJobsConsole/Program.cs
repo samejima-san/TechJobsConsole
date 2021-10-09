@@ -56,7 +56,7 @@ namespace TechJobsConsole
 
                     // What is their search term?
                     Console.WriteLine("\nSearch term: ");
-                    string searchTerm = Console.ReadLine();
+                    string searchTerm = Console.ReadLine().ToLower(); //make all comparisons lowercase
 
                     List<Dictionary<string, string>> searchResults;
 
@@ -125,11 +125,9 @@ namespace TechJobsConsole
             else{
                 foreach(Dictionary<string,string> job in someJobs){
                     Console.WriteLine("*****");
-                    Console.WriteLine($"name: {job["name"]}");
-                    Console.WriteLine($"employer: {job["employer"]}");
-                    Console.WriteLine($"location: {job["location"]}");
-                    Console.WriteLine($"postion type: {job["position type"]}");
-                    Console.WriteLine($"core competency: {job["core competency"]}");
+                    foreach(KeyValuePair<string, string> column in job){
+                        Console.WriteLine($"{column.Key}: {column.Value}");
+                    }
                     Console.WriteLine("*****\n");
                 }
             }
