@@ -22,7 +22,7 @@ namespace TechJobsConsole
             List<Dictionary<string,string>> values = new List<Dictionary<string,string>>();
             foreach (Dictionary<string, string> job in AllJobs){
                 foreach(KeyValuePair<string,string> item in job){
-                    if(input == item.Value.ToLower()){
+                    if(item.Value.ToLower().Contains(input)){
                         if(!values.Contains(job)){
                             values.Add(job);
                        }
